@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { NumberLiteralType } from 'typescript';
-// creating a Note object
+
+
+
 type Note={
   id: number
   title: string
@@ -142,10 +144,6 @@ const deleteNote= async(
   setNotes(updatedNotes)
 
 }
-  
-
-
-
   return (
     <div className='app-container'>
       <form  
@@ -155,19 +153,17 @@ const deleteNote= async(
         ? handleUpdateNote(event)
         : handleAddNote(event)
       }>
-        <input 
-        value={title}
+        
+      <div className="title">Welcome,<br></br><span>Easy Notes for you</span></div>
+      <input value={title}
         onChange={(event)=>
           setTitle(event.target.value)
-        }
-        placeholder="Title" type="text" />
-        <textarea 
-        value={content}
+        }className="input" name="title" placeholder="Title" type="text"/>
+      <textarea value={content}
         onChange={(event)=>
           setContent(event.target.value)
-        }
-        
-        placeholder='Content' rows={10} required />
+        }className="input" name="content" placeholder="Content" rows={10} required/>
+      
         {
           selectedNote ?(
             <div className='edit-buttons'>
@@ -177,33 +173,40 @@ const deleteNote= async(
               </button>
             </div>
           ): (
-            <button type="submit">Add Note</button>
+            <button className="button-confirm">Add Note→</button>
           )
         }
         
 
       </form>
+
+
+
+      
       <div className='notes-grid' >
         {notes.map((note)=>(
           
           <div 
           key={note.id}
-          className='note-item'
+          className='card'
           onClick={()=> handleNoteClick(note)}>
-          <div className='note-header'>
+          
+          
+  
+  <div className="card__content">
+  <div className='note-header'>
             <button
             onClick={(event)=> deleteNote(event,note.id)}
             
-            >x</button>
-          </div>
-          <h2>{note.title}</h2>
-          <p>{note.content}</p>
-        </div>
+            >x</button></div>
+    <p className="card__title">{note.title}</p>
+    <p className="card__description">{note.content}</p></div>
+</div>
       
 
         ))}
         </div>
-        
+    
 
 
     </div>
