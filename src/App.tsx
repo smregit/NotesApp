@@ -23,7 +23,7 @@ useEffect(()=>{
   const fetchNotes=async()=>{
     try {
       const response=
-        await fetch("http://localhost:5000/api/notes")
+        await fetch("https://notes-server-api.vercel.app/")
         const notes: Note[]=await response.json()
         setNotes(notes)
     } catch (error) {
