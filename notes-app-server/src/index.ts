@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { PrismaClient } from "@prisma/client"
+import { disableReactDevTools } from "@fvilers/disable-react-devtools"
 
 const app= express()
 const prisma=new PrismaClient()
