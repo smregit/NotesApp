@@ -13,6 +13,9 @@ app.use(cors(
         credentials:true
     }
 ))
+app.get("/",(req,res)=>{
+    res.json("hello")
+})
 const prisma=new PrismaClient()
 
 app.use(express.json())
