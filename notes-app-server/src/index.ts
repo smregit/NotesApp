@@ -20,7 +20,7 @@ const prisma=new PrismaClient()
 
 app.use(express.json())
 app.use(cors())
-app.get("/api/notes",async(req,res)=>{
+app.get("https://notes-server-api.vercel.app/notes",async(req,res)=>{
     const notes=await prisma.note.findMany()
     res.json(notes)
 })
@@ -45,7 +45,7 @@ app.post("https://notes-server-api.vercel.app/notes",async(req,res)=>{
     }
     
 })
-app.put("/api/notes/:id",async(req,res)=>{
+app.put("https://notes-server-api.vercel.app/notes/:id",async(req,res)=>{
     const {title,content}=req.body
     const id=parseInt(req.params.id)
     if(!title || !content){
@@ -72,7 +72,7 @@ app.put("/api/notes/:id",async(req,res)=>{
         
     }
 })
-app.delete("/api/notes/:id",async(req,res)=>{
+app.delete("https://notes-server-api.vercel.app/notes/:id",async(req,res)=>{
     const id=parseInt(req.params.id)
     if (!id || isNaN(id)){
         return res
