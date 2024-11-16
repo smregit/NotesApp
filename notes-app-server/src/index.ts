@@ -24,7 +24,7 @@ app.get("/api/notes",async(req,res)=>{
     const notes=await prisma.note.findMany()
     res.json(notes)
 })
-app.post("/api/notes",async(req,res)=>{
+app.post("https://notes-server-api.vercel.app/notes",async(req,res)=>{
     const{title,content}=req.body
     if (!title || !content){
         return res
